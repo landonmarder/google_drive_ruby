@@ -12,20 +12,18 @@ session = GoogleDrive.login("landon.marder@gmail.com", password)
 
 # Get the spreadsheet you want
 rows = session.spreadsheet_by_key('0AornRwZY3X2FdDdpRUhnMG1wMWJOdEtGTGZDbmNTYkE').worksheets[0].rows
-companies = Hash.new({})
 
-# Convert spreadsheet to hash
-rows.each do |row|
-  companies["#{row[0]}"] = { name: row[0], url: row[1], category: row[2] }
+companies = Array.new
+
+rows[1..-1].each do |row|
+  companies << { name: row[0], url: row[1], category: row[2] }
 end
 
-# Delete the header
-companies.delete("Company")
 
-# Write hash into the file as json
+# Write array into the file as json
 File.open('data/companies.json', 'w') { |f| f << companies.to_json }
 
 # How to access the json file in middleman
-# <% data.companies.keys.each do |company| %>
-#   <%= data.companies[company][:name]%>
+# <% data.companies.each do |company| %>
+#    <%= company[:name]%>
 # <% end %>

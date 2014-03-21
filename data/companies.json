@@ -1,1 +1,1 @@
-{"Company A":{"name":"Company A","url":"a.com","category":"A"},"Company B":{"name":"Company B","url":"b.com","category":"B"},"Company C":{"name":"Company C","url":"c.com","category":"C"}}
+[{"name":"Company A","url":"a.com","category":"A"},{"name":"Company B","url":"b.com","category":"B"},{"name":"Company C","url":"c.com","category":"C"}]
